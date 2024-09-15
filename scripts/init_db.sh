@@ -40,7 +40,7 @@ function dev_db_is_running {
 }
 
 function run_dev_db_if_not_running {
-  if ! dev_db_is_running; then
+  if ! dev_db_is_running || [ -z "${SKIP_DOCKER}" ]; then
     docker run \
       --name zero2prod_dev_db \
       -e POSTGRES_USER=${DB_USER} \
