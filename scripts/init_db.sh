@@ -80,3 +80,5 @@ function main {
   wait_for_postgres
   configure_dev_db
 }
+
+main
