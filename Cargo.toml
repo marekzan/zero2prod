@@ -2,7 +2,7 @@
 name = "zero2prod"
 version = "0.1.0"
 edition = "2021"
-authors = ["Marek Markiewka <markiewka.m@gmail.com>"]
+authors = ["Marek Markiewka <marekzan25@gmail.com>"]
 
 [lib]
 path = "src/lib.rs"
@@ -13,10 +13,22 @@ name = "zero2prod"
 
 [dependencies]
 actix-web = "4.9.0"
+chrono = { version = "0.4.38", default-features = false, features = ["clock"] }
 config = "0.14.0"
 serde = { version = "1.0.210", features = ["derive"] }
-sqlx = { version = "0.8.2", default-features = false, features = ["runtime-tokio-rustls", "macros", "postgres", "uuid", "chrono", "migrate"] }
+sqlx = { version = "0.8.2", default-features = false, features = [
+  "runtime-tokio-rustls",
+  "macros",
+  "postgres",
+  "uuid",
+  "chrono",
+  "migrate",
+] }
 tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
+uuid = { version = "1.10.0", features = ["v4"] }
+
+[patch.crates-io]
+yaml-rust = { package = "yaml-rust2", git = "https://github.com/Ethiraric/yaml-rust2.git", tag = "v0.9.0" }
 
 [dev-dependencies]
 reqwest = "0.12.7"
